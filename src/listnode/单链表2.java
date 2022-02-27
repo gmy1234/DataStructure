@@ -54,8 +54,25 @@ public class 单链表2 {
      * @return 结果
      */
     public static ListNode deleteDuplicatesII(ListNode head) {
+        final ListNode dummy = new ListNode(-1);
+        dummy.next = head;
 
-        return null;
+        ListNode cur = dummy;
+
+        while ( cur.next != null && cur.next.next != null  ) {
+            // cur.next 和 cur.next.next 不相等
+            if (cur.next.val != cur.next.next.val) {
+                cur = cur.next;
+            }else {
+                // 相等
+                int equalValue = cur.next.val;
+                while (cur.next != null && cur.next.val == equalValue) {
+                    cur.next = cur.next.next;
+                }
+            }
+        }
+
+        return dummy.next;
     }
 
 

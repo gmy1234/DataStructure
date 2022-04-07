@@ -13,21 +13,21 @@ public class QuickSort {
     }
 
     /**
-     * 给定一个数组arr，和一个数num，请把小于等于num的数放在数 组的左边，大于num的数放在数组的右边
+     * 1、给定一个数组arr，和一个数num，请把小于等于num的数放在数组的左边，大于num的数放在数组的右边
      */
     public static void Category(int[] arr, int num) {
-        int legnth = arr.length;
+        int length = arr.length;
         // 指针
         int point = 0;
         // 左边界
         int leftBorder = -1;
 
-        for (int i = 0; i < legnth; i++) {
+        for (int i = 0; i < length; i++) {
 
             // 如果 point < num ，i和左边界的下一个元素做交换
             if (arr[point] < num) {
                 leftBorder += 1;
-                if (leftBorder > legnth) {
+                if (leftBorder > length) {
                     break;
                 }
                 swap(arr, i, leftBorder);
@@ -38,7 +38,7 @@ public class QuickSort {
     }
 
     /**
-     * 给定一个数组arr，和一个数num，
+     * 2、给定一个数组arr，和一个数num，
      * 请把小于num的数放在数组的左边，等于num的放中间，大于num的数放在数组的右边
      *
      * @param arr 数组
@@ -58,7 +58,8 @@ public class QuickSort {
             /* 三种情况：
              * 1、 arr[point] < num
              * 2. arr[point] == num
-             * 3. arr[point] > num */
+             * 3. arr[point] > num
+             */
 
             // 1.
             if (arr[point] < num) {
@@ -66,7 +67,7 @@ public class QuickSort {
                 leftBoard += 1;
                 swap(arr, leftBoard, point);
                 point++;
-            } else if (arr[point] == num) { // 2
+            } else if (arr[point] == num) { // 2.
                 point++;
             } else { // 3
                 // 右边界的左边和arr[point] 进行交换
@@ -83,7 +84,7 @@ public class QuickSort {
     }
 
     /**
-     * 给定一个包含红色、白色和蓝色、共 n 个元素的数组 nums ，原地对它们进行排序，
+     * 2、5给定一个包含红色、白色和蓝色、共 n 个元素的数组 nums ，原地对它们进行排序，
      * 使得相同颜色的元素相邻，并按照红色、白色、蓝色顺序排列。
      * 我们使用整数 0, 1 和 2 分别表示红色、白色和蓝色。
      *

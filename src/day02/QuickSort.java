@@ -24,7 +24,7 @@ public class QuickSort {
 
         for (int i = 0; i < legnth; i++) {
 
-            // 如果 i < num ，i和左边界的下一个元素做交换
+            // 如果 point < num ，i和左边界的下一个元素做交换
             if (arr[point] < num) {
                 leftBorder += 1;
                 if (leftBorder > legnth) {

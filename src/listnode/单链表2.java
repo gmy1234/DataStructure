@@ -1,6 +1,8 @@
 package listnode;
 
 import java.sql.SQLOutput;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @version 1.0
@@ -115,5 +117,32 @@ public class 单链表2 {
         return head;
     }
 
+
+    /**
+     * 给定一个链表的 头节点 head ，请判断其是否为回文链表。
+     *
+     * 如果一个链表是回文，那么链表节点序列从前往后看和从后往前看是相同的。
+     */
+    public boolean isPalindrome(ListNode head) {
+
+        List<Integer> vals = new ArrayList<Integer>();
+
+        while (head != null) {
+            vals.add(head.val);
+            head = head.next;
+        }
+        int left = 0;
+        int right = vals.size() - 1;
+
+        while (left < right) {
+            if (!vals.get(left).equals(vals.get(right))){
+                return false;
+            }
+            left ++;
+            right --;
+        }
+
+        return true;
+    }
 
 }

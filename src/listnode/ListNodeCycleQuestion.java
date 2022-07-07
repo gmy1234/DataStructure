@@ -30,6 +30,8 @@ public class ListNodeCycleQuestion {
         if (flag == 0){
             return null;
         }
+        // 头节点赋给将快指针
+        // 从新遍历,每次走一步，相交节点入环
         fast = head;
         while (slow != fast) {
             fast = fast.next;

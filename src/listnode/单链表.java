@@ -69,6 +69,12 @@ public class 单链表 {
      * @ListNode 链表
      */
     public static ListNode deleteNode(ListNode t, int val) {
+        if(t == null){
+            return t;
+        }
+        if(t.val == val){
+            return t.next;
+        }
 
         ListNode pre = t;
         ListNode cur = pre.next;
@@ -375,6 +381,7 @@ public class 单链表 {
 
         int gap = Math.abs(aCount - bCount);
         while (gap > 0) {
+            assert longList != null;
             longList = longList.next;
             gap--;
         }
@@ -384,6 +391,7 @@ public class 单链表 {
                 return longList;
             }
             longList = longList.next;
+            assert shortList != null;
             shortList = shortList.next;
         }
 
@@ -459,7 +467,8 @@ public class 单链表 {
             rear = cur;
             lenght++;
         }
-
+        // 先遍历求得链表总长度count，同时将链表首尾相连；
+        // 再找到原链表的倒数第k+1个节点，该节点的next就是新链表的头结点。
         rear.next = head;
         int postion = lenght - (k % lenght);
 
@@ -472,6 +481,8 @@ public class 单链表 {
         head.next = null;
         return result;
     }
+
+
 
 
 }

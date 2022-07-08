@@ -3,6 +3,7 @@ package listnode;
 import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 /**
  * @version 1.0
@@ -24,8 +25,16 @@ public class 单链表2 {
         t4.next = t5;
         t5.next = new ListNode(3);
 
-        final ListNode listNode = deleteDuplicates(t1);
-        System.out.println(listNode);
+        // final ListNode listNode = deleteDuplicates(t1);
+        // System.out.println(listNode);
+        int[] test = reversePrint(t1);
+
+        for (int i : test) {
+            System.out.println(i);
+        }
+
+
+
 
     }
 
@@ -144,5 +153,29 @@ public class 单链表2 {
 
         return true;
     }
+
+
+    /**
+     * 输入一个链表的头节点，从尾到头反过来返回每个节点的值（用数组返回）。
+     */
+    public static int[] reversePrint(ListNode head) {
+
+        Stack<ListNode> stack = new Stack<>();
+
+        while (head != null) {
+            stack.push(head);
+            head = head.next;
+        }
+        int[] result = new int[stack.size()];
+
+        int i = 0;
+        while (!stack.isEmpty()){
+            result[i] = stack.pop().val;
+            i ++;
+
+        }
+        return result;
+    }
+
 
 }

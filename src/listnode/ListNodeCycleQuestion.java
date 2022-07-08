@@ -41,6 +41,7 @@ public class ListNodeCycleQuestion {
     }
 
     /**
+     * 找到链表的第一个相交节点
      * 无环 单链表相交问题
      * @param headA 链表A
      * @param headB 链表B

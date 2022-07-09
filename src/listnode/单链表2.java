@@ -1,6 +1,5 @@
 package listnode;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
@@ -27,13 +26,17 @@ public class 单链表2 {
 
         // final ListNode listNode = deleteDuplicates(t1);
         // System.out.println(listNode);
-        int[] test = reversePrint(t1);
 
-        for (int i : test) {
-            System.out.println(i);
+        ListNode h1 = new ListNode(1,new ListNode(3));
+        ListNode h2 = new ListNode(2,new ListNode(5));
+        ListNode h3 = new ListNode(5, new ListNode(10));
+
+        ListNode testResult = mergeTwoList(h1, h2);
+
+        while (testResult != null) {
+            System.out.println(testResult.val);
+            testResult = testResult.next;
         }
-
-
 
 
     }
@@ -177,5 +180,61 @@ public class 单链表2 {
         return result;
     }
 
+
+    /**
+     * 合并两个有序链表
+     * @param head1 链表 1
+     * @param head2 链表 2
+     * @return 合并后的链表
+     */
+    private static ListNode mergeTwoList(ListNode head1, ListNode head2){
+        // 哨兵
+        ListNode pre = new ListNode(-1);
+        ListNode temp = pre;
+
+        while (head1 != null && head2 != null) {
+            if (head1.val < head2.val) {
+                // 放入pre
+                temp.next = head1;
+                head1 = head1.next;
+            }else {
+                temp.next = head2;
+                head2 = head2.next;
+            }
+            // pre 链表执行指到下一个
+            temp = temp.next;
+        }
+
+        temp.next = head1 == null ? head2 : head1;
+        return pre.next;
+    }
+
+
+    /**
+     * 合并 k个 有序链表
+     * 方法一：顺序合并，创建一个中间变量 temp，用来接收顺序合并的列表
+     * @param lists k个有序链表的集合
+     * @return 合并后的链表
+     */
+    public static ListNode mergeKLists(List<ListNode> lists){
+
+        ListNode result = null;
+
+        for (ListNode list : lists) {
+            // 调用 合并两个单链表的方法。
+            result = mergeTwoList(list, result);
+        }
+
+        return result;
+    }
+
+    public static ListNode mergeKLists2(List<ListNode> lists){
+
+        ListNode result = null;
+
+        
+
+        return result;
+    }
 
 }

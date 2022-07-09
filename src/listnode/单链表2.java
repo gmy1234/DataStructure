@@ -216,7 +216,7 @@ public class 单链表2 {
      * @param lists k个有序链表的集合
      * @return 合并后的链表
      */
-    public static ListNode mergeKLists(List<ListNode> lists){
+    public static ListNode mergeKLists(ListNode[] lists){
 
         ListNode result = null;
 
@@ -228,13 +228,26 @@ public class 单链表2 {
         return result;
     }
 
+    /**
+     * 合并 K 个有序单链表
+     * 方法二：分治法、二分法， 假如有 n 个单链表，就可以，合并成 n/2 个 单链表，再次合并，成为 n/4个单链表。。。
+     * 最后合成 1个。。。单链表
+     *
+     * @param lists
+     * @return
+     */
     public static ListNode mergeKLists2(List<ListNode> lists){
 
         ListNode result = null;
 
+
         
 
         return result;
+    }
+
+    private ListNode merge(ListNode l1, ListNode l2){
+        return null;
     }
 
 }

@@ -1,8 +1,6 @@
 package listnode;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * @version 1.0
@@ -233,21 +231,66 @@ public class 单链表2 {
      * 方法二：分治法、二分法， 假如有 n 个单链表，就可以，合并成 n/2 个 单链表，再次合并，成为 n/4个单链表。。。
      * 最后合成 1个。。。单链表
      *
-     * @param lists
-     * @return
+     * @param lists 多个链表
+     * @return 合并后的单链表
      */
     public static ListNode mergeKLists2(List<ListNode> lists){
-
-        ListNode result = null;
-
-
-        
-
-        return result;
+        return merge(lists, 0, lists.size());
     }
 
-    private ListNode merge(ListNode l1, ListNode l2){
-        return null;
+    private static ListNode merge(List<ListNode>  lists, int left, int right){
+        if(lists.size() == 0 || lists == null){
+            return null;
+        }
+        if (left == right) {
+            return lists.get(0);
+        }
+        if (left > right) {
+            return null;
+        }
+        // 左移 << 称 n ，右移： >> 除以 n
+        int mid = (left + right) >> 1;
+
+        ListNode merge1 = merge(lists, left, mid);
+        ListNode merge2 = merge(lists, mid + 1, right);
+
+        return mergeTwoList(merge1, merge2);
     }
+
+    /**
+     * 方法3，使用优先级队列
+     * @param lists k个有序单链表
+     * @return 有序的单链表
+     */
+    public static ListNode mergeKLists3(List<ListNode> lists){
+        PriorityQueue<ListNode> pQueue = new PriorityQueue<>(lists.size(), new Comparator<ListNode>() {
+            @Override
+            public int compare(ListNode o1, ListNode o2) {
+                // return Integer.compare(o1.val, o2.val);
+                if (o1.val < o2.val) return -1;
+                else if (o1.val == o2.val) return 0;
+                else return 1;
+            }
+        });
+        // 创建返回节点
+        ListNode dummy = new ListNode(0);
+        ListNode p = dummy;
+        // 遍历链表，队列中添加
+        lists.forEach(item ->{
+            if (item != null){
+                pQueue.add(item);
+            }
+        });
+
+        while (!pQueue.isEmpty()){
+            p.next = pQueue.poll();
+            p = p.next;
+            if (p.next != null){
+                pQueue.add(p.next);
+            }
+        }
+        return dummy.next;
+    }
+
 
 }

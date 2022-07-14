@@ -1,14 +1,15 @@
-package jvm;
+package DP;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
+import java.util.regex.Pattern;
 
 
 /**
  * -Xms600m -Xmx600m -XX:SurvivorRatio=8
  */
 public class HeapInstanceTest {
-    byte[] buffer = new byte[new Random().nextInt(1024 * 100)];
 
     public static void main(String[] args) {
         try {
@@ -27,4 +28,4 @@ public class HeapInstanceTest {
         }
     }
 
-}
+            }
